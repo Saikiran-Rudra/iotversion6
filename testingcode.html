@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Irrigation Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <style>
+        body {
+            background-color: #FAFAFA;
+            /* Light gray background */
+            color: #333333;
+            /* Darker text color */
+        }
+      .navbar-brand {
+            font-weight: bold;
+            color: #388e3c;
+        }
+        .btn-logout {
+            background-color: #DC3545;
+            /* Red for logout button */
+            color: #ffffff;
+        }
+    
+        .card {
+            background-color: #ffffff;
+            border: 2px solid #2C6B2F;
+            /* Green border for cards */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            /* Soft shadow for cards */
+        }
+    
+        .card-header,
+        .card-footer {
+            background-color: #2C6B2F;
+            color: #ffffff;
+        }
+    
+        .text-primary {
+            color: #2C6B2F !important;
+            /* Green text for headings */
+        }
+    
+        .text-danger {
+            color: #F44336 !important;
+            /* Red text for warnings */
+        }
+    
+        .text-success {
+            color: #388E3C !important;
+            /* Success green */
+        }
+    
+        .table-light {
+            background-color: #F0F0F0;
+            /* Light gray background for table */
+        }
+    
+        .modal-content {
+            background-color: #ffffff;
+        }
+    
+        .modal-header {
+            background-color: #2C6B2F;
+            color: white;
+        }
+    
+        .modal-footer {
+            background-color: #2C6B2F;
+        }
+    
+        .footer {
+            background-color: #2C6B2F;
+            color: white;
+        }
+      
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand" href="#">🌱 Farms</a>
+            <div class="ms-auto d-flex align-items-center gap-3">
+                <span class="text-success fw-semibold">Saikiran</span>
+                <!-- <button class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#addFarmModal">+
+                        Add Farm</button> -->
+                <i class="bi bi-bell-fill text-secondary fs-5"></i>
+                <i class="bi bi-gear-fill text-secondary fs-5"></i>
+                <a href="/index.html" <button class="btn btn-outline-danger btn-sm">Logout</button></a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card shadow p-3" style="border-radius: 10px;">
+                    <div class="d-flex justify-content-between">
+                        <h5 class="fw-bold text-primary">Farm Information</h5>
+                        <p class="fw-bold text-danger"><strong>Farm ID:</strong> 2345</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <br>
+                            <div class="row mb-2">
+                                <div class="col-5"><strong>Farm Name:</strong></div>
+                                <div class="col-1 text-center">|</div>
+                                <div class="col-6 text-primary">DEEP DARSHAN</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-5"><strong>Crop:</strong></div>
+                                <div class="col-1 text-center">|</div>
+                                <div class="col-6 text-primary">Rice</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-5"><strong>Soil Type:</strong></div>
+                                <div class="col-1 text-center">|</div>
+                                <div class="col-6 text-primary">Loamy</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-5"><strong>City:</strong></div>
+                                <div class="col-1 text-center">|</div>
+                                <div class="col-6 text-primary">Surat</div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <br>
+                            <div class="row mb-2">
+                                <div class="col-5"><strong>Type of Farming:</strong></div>
+                                <div class="col-1 text-center">|</div>
+                                <div class="col-6 text-primary">Organic</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-5"><strong>Water Source:</strong></div>
+                                <div class="col-1 text-center">|</div>
+                                <div class="col-6 text-primary">Well</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-5"><strong>Irrigation Method:</strong></div>
+                                <div class="col-1 text-center">|</div>
+                                <div class="col-6 text-primary">Traditional</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-5"><strong>Farm Area:</strong></div>
+                                <div class="col-1 text-center">|</div>
+                                <div class="col-6 text-primary">2 Hectares</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="row">
+                    <!-- Soil Moisture Level Box -->
+                    <div class="col-md-6">
+                        <div class="card shadow p-3" style="border-radius: 10px;">
+                            <h5 class="fw-bold text-primary">Soil Moisture Level</h5>
+                            <div class="d-flex align-items-center">
+                                <img src="/water.png" alt="Water Icon" width="80" height="80" class="me-2">
+                                <p class="display-6 text-primary mb-0">92%</p>
+                            </div>
+                            <br>
+                            <p class="text-danger fw-bold">Required Soil Moisture: 90%</p>
+                            <p class="text-danger fw-bold">Motor turns ON when water level drops</p>
+                        </div>
+                    </div>
+
+                    <!-- Alerts Box -->
+                    <div class="col-md-6">
+                        <div class="card shadow p-3" style="border-radius: 10px;">
+                            <h5 class="fw-bold text-primary">Alerts</h5>
+                            <p class="text-danger fw-bold">Check water level in the reservoir</p>
+                            <p class="text-warning fw-bold">Soil temperature is slightly high</p>
+                        </div>
+
+                        <!-- Humidity & Temperature Box -->
+                        <div class="card shadow p-3 mt-3" style="border-radius: 10px;">
+                            <p class="text-primary fw-bold">Humidity: 80%</p>
+                            <p class="text-danger fw-bold">Temperature: 30°C</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row mt-4">
+            <!-- Main Irrigation Plan Table -->
+            <div class="col-md-8">
+                <div class="card shadow p-3" style="border-radius: 10px;">
+                    <h5 class="fw-bold text-primary">Irrigation Plan</h5>
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Watering Start Date</th>
+                                <th>Watering Stop Date</th>
+                                <th>Watering Start Time</th>
+                                <th>Watering End Time</th>
+                                <th>Actions</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="6" class="text-center text-muted">No Data Available</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button class="btn btn-success fw-bold" data-bs-toggle="modal" data-bs-target="#addScheduleModal">+
+                        Add
+                        Schedule</button>
+                </div>
+            </div>
+
+            <!-- Side Boxes -->
+            <div class="col-md-4">
+                <div class="row">
+                    <!-- Motor Status Box -->
+                    <div class="col-md-6">
+                        <div class="card shadow p-3" style="border-radius: 10px;">
+                            <h5 class="fw-bold text-primary">Motor Status</h5>
+                            <div class="d-flex gap-4">
+                                <button class="btn btn-success">ON</button>
+                                <button class="btn btn-danger">OFF</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Current Status Box -->
+                    <div class="col-md-6">
+                        <div class="card shadow p-3" style="border-radius: 10px;">
+                            <h5 class="fw-bold text-primary">Current Status: <p>OFF</p>
+                            </h5>
+                            <p class="text-danger fw-bold">due to water level.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sensor Data Box -->
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <div class="card shadow p-3" style="border-radius: 10px;">
+                            <h5 class="fw-bold text-primary">Sensor Control</h5>
+                            <div class="d-flex justify-content-between align-items-center p-2"
+                                style="border-bottom: 1px solid #388E3C;">
+                                <span class="fw-bold text-success">Sensor Name</span>
+                                <span class="fw-bold text-success">Status</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center p-2">
+                                <span class="fw-bold text-primary">Soil Moisture sensor</span>
+                                <span class="fw-bold text-danger">Inactive</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- //modal// -->
+    <div class="modal fade" id="addScheduleModal" tabindex="-1" aria-labelledby="addScheduleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addScheduleModalLabel">Add Irrigation Schedule</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="start-date" class="form-label">Watering Start Date</label>
+                            <input type="date" class="form-control" id="start-date">
+                        </div>
+                        <div class="mb-3">
+                            <label for="end-date" class="form-label">Watering Stop Date</label>
+                            <input type="date" class="form-control" id="end-date">
+                        </div>
+                        <div class="mb-3">
+                            <label for="start-time" class="form-label">Watering Start Time</label>
+                            <input type="time" class="form-control" id="start-time">
+                        </div>
+                        <div class="mb-3">
+                            <label for="end-time" class="form-label">Watering End Time</label>
+                            <input type="time" class="form-control" id="end-time">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save Schedule</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer text-center p-3">
+        <p>&copy; 2025 Farm Mitra. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

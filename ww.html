@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Irrigation Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Sidebar Styles */
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            color: #f1f1f1;
+        }
+
+        .sidebar .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        #main {
+            transition: margin-left .5s;
+            padding: 20px;
+        }
+
+        /* Open button styles */
+        .openbtn {
+            font-size: 20px;
+            background-color: #111;
+            color: white;
+            border: none;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 15px;
+            cursor: pointer;
+        }
+
+        .openbtn:hover {
+            background-color: #444;
+        }
+
+        /* Report content area */
+        #report-content {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <script>
+        // Function to open the sidebar
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+        }
+
+        // Function to close the sidebar
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+        }
+
+        // Function to load content dynamically into the sidebar
+        function loadReportContent() {
+            fetch('slot.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("report-content").innerHTML = data;
+                })
+                .catch(error => console.error('Error loading the report:', error));
+        }
+    </script>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="javascript:void(0)" onclick="loadReportContent()">Reports</a>
+        <a href="#">Dashboard</a>
+        <a href="#">Farm Information</a>
+        <a href="#">Irrigation Plan</a>
+        <a href="#">Sensor Data</a>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main">
+        <!-- Open Sidebar Button -->
+        <button class="openbtn" onclick="openNav()">☰ Open Sidebar</button>
+
+        <!-- Report content will be injected here -->
+        <div id="report-content">
+            <!-- Placeholder content -->
+            <h2>Welcome to the Smart Irrigation Dashboard</h2>
+            <p>Click on the "Reports" link in the sidebar to load the report content dynamically.</p>
+        </div>
+    </div>
+
+</body>
+
+</html>

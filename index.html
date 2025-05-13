@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriConnect - Login / Signup</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --agri-green: #4caf50;
+            --soil-brown: #8d6e63;
+            --light-bg: #ffffff;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .auth-img {
+            background: url('/images/loginphoto.jpg') no-repeat center center;
+            background-size: cover;
+            height: 100vh;
+        }
+
+        .form-card {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .toggle-btns .btn {
+            width: 100px;
+            margin: 0 5px;
+        }
+
+        .btn-primary {
+            background-color: var(--agri-green);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #388e3c;
+        }
+
+        .btn-success {
+            background-color: var(--soil-brown);
+            border: none;
+        }
+
+        .btn-success:hover {
+            background-color: #6d4c41;
+        }
+
+        h4 {
+            color: var(--agri-green);
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 auth-img d-none d-md-block"></div>
+            <div class="col-md-6 d-flex flex-column justify-content-center align-items-center vh-100">
+                <div class="form-card">
+                    <div class="d-flex justify-content-center mb-3 toggle-btns">
+                        <button id="btnLogin" class="btn btn-outline-success active">Login</button>
+                        <button id="btnSignup" class="btn btn-outline-secondary">Signup</button>
+                    </div>
+
+                    <!-- Login Form -->
+                    <form id="loginForm" class="needs-validation" novalidate>
+                        <h4 class="mb-3 text-center">Login to AgriConnect</h4>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Email" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="password" class="form-control" placeholder="Password" required minlength="6">
+                        </div>
+                        
+                       <a href="/slot.html" <button type="submit" class="btn btn-primary w-100">Login</button> </a>
+                    </form>
+
+                    <!-- Signup Form -->
+                    <form id="signupForm" class="needs-validation d-none" novalidate>
+                        <h4 class="mb-3 text-center">Create your account</h4>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Full Name" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Email" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="password" class="form-control" placeholder="Password" required minlength="6">
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">Signup</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const loginBtn = document.getElementById('btnLogin');
+        const signupBtn = document.getElementById('btnSignup');
+        const loginForm = document.getElementById('loginForm');
+        const signupForm = document.getElementById('signupForm');
+
+        loginBtn.onclick = () => {
+            loginForm.classList.remove('d-none');
+            signupForm.classList.add('d-none');
+            loginBtn.classList.add('btn-outline-success');
+            signupBtn.classList.remove('btn-outline-success');
+        };
+
+        signupBtn.onclick = () => {
+            signupForm.classList.remove('d-none');
+            loginForm.classList.add('d-none');
+            signupBtn.classList.add('btn-outline-success');
+            loginBtn.classList.remove('btn-outline-success');
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
